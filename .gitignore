@@ -1,0 +1,6 @@
+expense_tracker\.env
+venv
+.djlintrc
+expense_tracker\__pycache__
+tracker\__pycache__
+db.sqlite3

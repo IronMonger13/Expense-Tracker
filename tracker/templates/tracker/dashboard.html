@@ -1,0 +1,140 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block page_title %}
+    Dashboard
+{% endblock page_title %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'tracker/dashboard.css' %}">
+{% endblock css %}
+
+{% block body_content %}
+    {% comment %} ---------- NAV BAR ---------- {% endcomment %}
+    <nav>
+        {% include "tracker/includes/navbar.html" %}
+    </nav>
+    <div class="body-wrapper">
+        <div class="body-container">
+            {% comment %} ---------- HEADING ---------- {% endcomment %}
+            <section class="header">
+                <h2>Dashboard</h2>
+                <p>Your financial overview.</p>
+            </section>
+            <div class="main-display">
+                <div class="left-pane">
+                    {% comment %} ---------- BALANCE CARD ---------- {% endcomment %}
+                    <section class="balance-card">
+                        <div class="upper-card">
+                            <p>Total Balance</p>
+                            <h2>Rs. {{ total_balance }}</h2>
+                        </div>
+                        <hr>
+                        <div class="lower-card">
+                            <div class="income-half">
+                                <p><span><img src="{% static 'tracker/images/income_arrow.svg' %}"
+     alt="Income arrow"
+     class="overview-arrow"></span>Total Income</p>
+                                <h4>Rs. {{ total_income }}</h4>
+                            </div>
+                            <div class="expense-half">
+                                <p><span><img src="{% static 'tracker/images/expense_arrow.svg' %}"
+     alt="Expense arrow"
+     class="overview-arrow"></span>Total Expense</p>
+                                <h4>Rs. {{ total_expense }}</h4>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="upper-card">
+                            {% if total_expense > total_income %}
+                                <p>Net Expenditure</p>
+                                <h2>{{ net_expenditure_percent }}%</h2>
+                            {% else %}
+                                <p>Net Savings</p>
+                                <h2>{{ net_saving_percent }}%</h2>
+                            {% endif %}
+
+                            <p>of income</p>
+                        </div>
+                    </section>
+                    {% comment %} ---------- RECENT TRANSACTIONS ---------- {% endcomment %}
+                    <section class="recent-transactions">
+                        <div class="data">
+                            <div class="heading">
+                                <h4>Recent Transactions</h4>
+                                <a href="{% url 'transactions' %}">View all</a>
+                            </div>
+                            <div class="transaction-records">
+                                {% if recent_five_transactions %}
+                                    {% for transaction in recent_five_transactions %}
+                                        <div class="all-transactions">
+                                            <div class="transaction-data">
+                                                <div class="icon">
+                                                    {% if transaction.transaction_type == "Income" %}
+                                                        <img src="{% static 'tracker/images/income_arrow.svg' %}"
+                                                             alt="Income arrow"
+                                                             class="arrow income-arrow">
+                                                    {% else %}
+                                                        <img src="{% static 'tracker/images/expense_arrow.svg' %}"
+                                                             alt="Expense arrow"
+                                                             class="arrow expense-arrow">
+                                                    {% endif %}
+                                                </div>
+                                                <div class="transaction-title">
+                                                    <h5>
+                                                        <a href="{% url 'view_transaction' transaction_id=transaction.id %}">{{ transaction.title|capfirst }}</a>
+                                                    </h5>
+                                                    <p>{{ transaction.get_category_display }} | {{ transaction.transaction_date }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="transaction-amount">
+                                                {% if transaction.transaction_type == "Income" %}
+                                                    <h5 style="color: #4ADE80">+{{ transaction.amount }}</h5>
+                                                {% else %}
+                                                    <h5 style="color: #F87171">-{{ transaction.amount }}</h5>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                {% else %}
+                                    <p>Add some transaction to see this section</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="right-pane">
+                    {% comment %} ---------- SPENDING SNAPSHOTS ---------- {% endcomment %}
+                    <section class="spending-snapshots-wrapper">
+                        <div class="spending-snapshots-container">
+                            <h4>Spending Snapshot</h4>
+                            {% if category_expenses %}
+                                {% for item in category_expenses %}
+                                    <div class="single-category">
+                                        <div class="category-info">
+                                            <div class="category-name">
+                                                <p>{{ item.category_label }}</p>
+                                            </div>
+                                            <div class="category-amount">
+                                                <p>Rs. {{ item.total_amount }} ({{ item.category_percent }}%)</p>
+                                            </div>
+                                        </div>
+                                        <div class="parent-bar">
+                                            <div class="child-bar" style="width: {{ item.category_percent }}%;"></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="spending-snapshots-container"></div>
+                            {% else %}
+                                <p>Add some transactions to view expense category breakdown</p>
+                            {% endif %}
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body_content %}

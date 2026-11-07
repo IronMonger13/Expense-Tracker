@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block page_title %}
+    Add Transaction
+{% endblock page_title %}
+
+{% block body_content %}
+    <link rel="stylesheet" href="{% static 'tracker/add_transaction.css' %}">
+    <nav>
+        {% include "tracker/includes/navbar.html" %}
+    </nav>
+    <section class="header">
+        <h2>Add Transaction</h2>
+        <p>Record where your money goes.</p>
+    </section>
+    <section class="form-wrapper">
+        <form class="form" method="post" action="{% url 'add_transaction' %}">
+            {% csrf_token %}
+            {% for field in transaction_form %}
+                <div class="label-field">
+                    <div class="labels">{{ field.label_tag }}</div>
+                    <div class="fields">
+                        {% if field.name == "transaction_type" %}
+                            <div class="transaction-type-toggle">
+                                {% for radio in field %}
+                                    <label class="type-option">
+                                        {{ radio.tag }}
+                                        <span>{{ radio.choice_label }}</span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="btn-wrapper">
+                <button class="btn submit-transaction-btn" type='submit'>Add Transaction</button>
+                <a class="btn cancel-btn" href="{% url 'dashboard' %}">Cancel</a>
+            </div>
+        </form>
+    </section>
+{% endblock body_content %}

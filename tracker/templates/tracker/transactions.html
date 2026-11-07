@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block page_title %}
+    Transactions
+{% endblock page_title %}
+
+{% block body_content %}
+    <link rel="stylesheet" href="{% static 'tracker/transactions.css' %}">
+    <nav>
+        {% include "tracker/includes/navbar.html" %}
+    </nav>
+    <section class="header">
+        <h2>Transaction</h2>
+        <p>Review and manage your money movements.</p>
+    </section>
+    <section class="wrapper">
+        <div class="data">
+            <div class="heading">
+                <h4><strong>Transaction history</strong></h4>
+                <p>{{ count_of_transactions }} records</p>
+            </div>
+            <hr>
+            <div class="transaction-records">
+                {% for transaction in all_transactions %}
+                    <div class="all-transactions">
+                        <div class="transaction-data">
+                            <div class="icon">
+                                {% if transaction.transaction_type == "Income" %}
+                                    <img src="{% static 'tracker/images/income_arrow.svg' %}"
+                                         alt="Income arrow"
+                                         class="arrow income-arrow">
+                                {% else %}
+                                    <img src="{% static 'tracker/images/expense_arrow.svg' %}"
+                                         alt="Expense arrow"
+                                         class="arrow expense-arrow">
+                                {% endif %}
+                            </div>
+                            <div class="transaction-title">
+                                <h5>
+                                    <a href="{% url 'view_transaction' transaction_id=transaction.id %}">{{ transaction.title|capfirst }}</a>
+                                </h5>
+                                <p>{{ transaction.get_category_display }} | {{ transaction.transaction_date }}</p>
+                            </div>
+                        </div>
+                        <div class="transaction-amount">
+                            {% if transaction.transaction_type == "Income" %}
+                                <h5 style="color: #4ADE80">+{{ transaction.amount }}</h5>
+                            {% else %}
+                                <h5 style="color: #F87171">-{{ transaction.amount }}</h5>
+                            {% endif %}
+
+                            <a class="delete-btn"
+                               href="{% url 'delete_transaction' transaction_id=transaction.id %}">Delete</a>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock body_content %}

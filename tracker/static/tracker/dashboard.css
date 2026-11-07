@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+.body-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.body-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.main-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    width: 100%;
+    align-items: start;
+}
+
+.left-pane {
+    width: 100%;
+    min-width: 0;
+}
+
+.right-pane {
+    width: 100%;
+    min-width: 0;
+}
+
+.balance-card {
+    background-color: rgb(100, 100, 100);
+    width: 100%;
+    margin-top: 10px;
+    padding: 1rem 2rem;
+    padding-top: 1.25rem;
+    border-radius: 1.75rem;
+}
+
+.upper-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lower-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.overview-arrow {
+    height: 20px;
+    margin-right: 2px;
+}
+
+.spending-snapshots-wrapper {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(100, 100, 100);
+    padding: 0.5rem 2rem;
+    padding-top: 1.25rem;
+    border-radius: 1.75rem;
+}
+
+.spending-snapshots-container {
+    width: 95%;
+    padding-bottom: 10px;
+}
+
+.spending-snapshots-container>h4 {
+    margin-bottom: 20px;
+}
+
+.single-category {
+    margin-top: 12px;
+}
+
+.category-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-name>p {
+    margin: 0;
+}
+
+.category-amount>p {
+    margin: 0;
+}
+
+.parent-bar {
+    width: 100%;
+    height: 10px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 5px;
+}
+
+.child-bar {
+    height: 10px;
+    border-radius: 10px;
+    background-color: rgb(104, 169, 255);
+    position: absolute;
+}
+
+.recent-transactions {
+    width: 100%;
+    padding-top: 1.25rem;
+}
+
+.data {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgb(100, 100, 100);
+    padding: 0.5rem 2rem;
+    padding-top: 1.25rem;
+    border-radius: 1.75rem;
+}
+
+.heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.heading>h4 {
+    margin-bottom: 20px;
+}
+
+.transaction-records {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.all-transactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.transaction-data {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.arrow {
+    margin-right: 20px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.income-arrow {
+    background-color: #DDF7EA;
+}
+
+.expense-arrow {
+    background-color: #FDE7E7;
+}
+
+.transaction-data>.transaction-title>p {
+    margin: 0;
+}
+
+.transaction-data>.transaction-title>h5>a {
+    color: white;
+    text-decoration: none;
+}
+
+.transaction-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: center;
+}
+
+.transaction-amount>a {
+    color: white;
+    text-decoration: none;
+}
+
+.transaction-amount>a .transaction-data>h5>a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 800px) {
+    .body-container {
+        width: 94%;
+    }
+
+    .main-display {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .balance-card,
+    .data,
+    .spending-snapshots-wrapper {
+        padding: 1.25rem;
+    }
+}

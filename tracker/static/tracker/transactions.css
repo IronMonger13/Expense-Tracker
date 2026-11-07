@@ -1,0 +1,113 @@
+.heading>h4 {
+    margin-bottom: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5vh;
+}
+
+.header>p {
+    font-weight: 300;
+    color: grey;
+}
+
+.data>hr {
+    margin-top: 0;
+}
+
+.wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.data {
+    width: clamp(30vw, 100%, 45vw);
+    background-color: rgba(169, 169, 169, 0.671);
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 1.5rem 2rem 0.5rem 2rem;
+}
+
+.heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.transaction-records {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.all-transactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.transaction-data {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.arrow {
+    margin-right: 20px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.income-arrow {
+    background-color: #DDF7EA;
+}
+
+.expense-arrow {
+    background-color: #FDE7E7;
+}
+
+.transaction-data>.transaction-title>p {
+    margin: 0;
+}
+
+.transaction-data>.transaction-title>h5>a {
+    color: white;
+    text-decoration: none;
+}
+
+.transaction-amount>a {
+    color: white;
+    text-decoration: none;
+}
+
+.transaction-amount>a .transaction-data>h5>a:hover {
+    text-decoration: underline;
+}
+
+.transaction-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.delete-btn:hover {
+    color: #F87171;
+}

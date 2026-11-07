@@ -1,0 +1,154 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5vh;
+}
+
+.header>p {
+    font-weight: 300;
+    color: grey;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.form {
+    padding: 2rem;
+    width: clamp(30vw, 100%, 40vw);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background-color: rgba(169, 169, 169, 0.671);
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.label-field {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    align-items: center;
+    column-gap: 15px;
+    width: 100%;
+}
+
+.labels {
+    text-align: left;
+}
+
+.fields {
+    width: 100%;
+}
+
+.form-input {
+    padding: 0.5rem;
+    padding-left: 0.8rem;
+    border-radius: 12px;
+    border: 1px solid gray
+}
+
+.form-input:disabled {
+    opacity: 1;
+    cursor: default;
+    color: white;
+    background-color: #393939;
+    border-color: #555;
+}
+
+.fields .form-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.fields .form-description {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.transaction-type-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: #393939;
+    border: 1px solid #555;
+    border-radius: 999px;
+}
+
+.type-option {
+    position: relative;
+    cursor: pointer;
+}
+
+.type-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.type-option span {
+    display: block;
+    padding: 9px 20px;
+    border-radius: 999px;
+    color: #c0c0c0;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.type-option input[type="radio"]:checked+span {
+    background: #f1f1f1;
+    color: #171717;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.type-option input[type="radio"]:focus-visible+span {
+    outline: 2px solid #4ade80;
+    outline-offset: 2px;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    width: 25%;
+    padding: 3px 5px;
+    margin: 0 5px;
+    border-radius: 20px;
+}
+
+.submit-transaction-btn {
+    width: 75%;
+    background-color: green;
+    border: 1px solid darkgreen;
+}
+
+.cancel-btn {
+    background-color: rgb(185, 11, 11);
+    border: 1px solid darkred;
+}
+
+.edit-transaction-btn {
+    /* width: 75%; */
+    background-color: rgba(255, 255, 255, 0.863);
+    color: black;
+    border: 1px solid grey;
+}
+
+@media (max-width: 600px) {
+    .label-field {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .fields {
+        width: 100%;
+    }
+}

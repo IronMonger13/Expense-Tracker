@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block page_title %}
+    Transaction Details | {{ transaction.title|capfirst }}
+{% endblock page_title %}
+
+{% block body_content %}
+    <link rel="stylesheet" href="{% static 'tracker/add_transaction.css' %}">
+    <nav>
+        {% include "tracker/includes/navbar.html" %}
+    </nav>
+    <section class="header">
+        <h2>Transaction Details</h2>
+    </section>
+    <section class="form-wrapper">
+        <div class="form">
+            {% for field in transaction_form %}
+                <div class="label-field">
+                    <div class="labels">{{ field.label_tag }}</div>
+                    <div class="fields">
+                        {% if field.name == "transaction_type" %}
+                            <div class="transaction-type-toggle">
+                                {% for radio in field %}
+                                    <label class="type-option">
+                                        {{ radio.tag }}
+                                        <span>{{ radio.choice_label }}</span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="btn-wrapper">
+                <a class="btn edit-transaction-btn"
+                   href="{% url 'edit_transaction' transaction_id=transaction_id %}">
+                    Edit
+                </a>
+                <a class="btn cancel-btn"
+                   href="{% url 'delete_transaction' transaction_id=transaction_id %}">Delete</a>
+            </div>
+        </div>
+    </section>
+{% endblock body_content %}
