@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -135,6 +136,7 @@ DATE_INPUT_FORMATS = [
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "expense_tracker" / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 # Email
