@@ -14,12 +14,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding: 30px 20px;
+    box-sizing: border-box;
 }
 
 .form {
     padding: 2rem;
-    width: clamp(30vw, 100%, 40vw);
+    width: 100%;
+    max-width: 600px;
+    min-width: 0;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -142,13 +149,71 @@
     border: 1px solid grey;
 }
 
+
 @media (max-width: 600px) {
+
+    .form-wrapper {
+        padding: 20px 15px;
+    }
+
+    .form {
+        width: 100%;
+        padding: 1.25rem;
+        gap: 16px;
+    }
+
     .label-field {
+        display: grid;
         grid-template-columns: 1fr;
         gap: 6px;
     }
 
+    .labels {
+        text-align: left;
+    }
+
     .fields {
         width: 100%;
+        min-width: 0;
+    }
+
+    .fields .form-input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Transaction Type Toggle */
+    .transaction-type-toggle {
+        display: flex;
+        width: fit-content;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .type-option {
+        flex: 1;
+        text-align: center;
+    }
+
+    .type-option span {
+        padding: 9px 16px;
+        white-space: nowrap;
+    }
+
+    /* Buttons */
+    .btn-wrapper {
+        gap: 8px;
+    }
+
+    .btn {
+        flex: 1;
+        width: auto;
+        margin: 0;
+        padding: 8px 5px;
+        text-align: center;
+    }
+
+    .submit-transaction-btn {
+        width: auto;
     }
 }
