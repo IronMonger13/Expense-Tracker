@@ -23,10 +23,13 @@
     display: flex;
     justify-content: center;
     padding: 15px;
+    box-sizing: border-box;
 }
 
 .data {
-    width: clamp(30vw, 100%, 45vw);
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
     background-color: rgba(169, 169, 169, 0.671);
     border: 1px solid gray;
     border-radius: 10px;
@@ -110,4 +113,53 @@
 
 .delete-btn:hover {
     color: #F87171;
+}
+
+
+@media (max-width: 600px) {
+
+    .wrapper {
+        padding: 12px;
+    }
+
+    .data {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .heading {
+        align-items: center;
+    }
+
+    .all-transactions {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .transaction-data {
+        min-width: 0;
+        flex: 1;
+        gap: 8px;
+    }
+
+    .transaction-title {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .transaction-title p {
+        font-size: 12px;
+    }
+
+    .arrow {
+        margin-right: 5px;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .transaction-amount {
+        flex-shrink: 0;
+        font-size: 13px;
+    }
+
 }
