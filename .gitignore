@@ -1,6 +1,5 @@
-C:\Projects\Expense Tracker\expense_tracker\.env
-venv
+.env
+venv/
 .djlintrc
-expense_tracker\__pycache__
-tracker\__pycache__
+__pycache__
 db.sqlite3
