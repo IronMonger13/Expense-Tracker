@@ -217,3 +217,37 @@
         width: auto;
     }
 }
+
+
+/* Date input */
+.fields input[type="date"] {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: 0.5rem 0.8rem;
+
+    font-family: inherit;
+    font-size: 1rem;
+    color: white;
+
+    background-color: #393939;
+    border: 1px solid gray;
+    border-radius: 12px;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .fields input[type="date"] {
+        width: 100%;
+        max-width: 100%;
+        font-size: 16px;
+        padding: 0.7rem 0.8rem;
+    }
+}
