@@ -54,7 +54,7 @@ Expense-Tracker/
 └── requirements.txt
 ```
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - User authentication and personalized financial dashboards.
 - Monthly and yearly spending analytics.
@@ -63,7 +63,7 @@ Expense-Tracker/
 - Export transactions to CSV and Excel.
 - Enhanced filtering and search functionality.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, suggestions, and bug reports are welcome.
 
@@ -73,7 +73,7 @@ Contributions, suggestions, and bug reports are welcome.
 4. Push your branch.
 5. Open a Pull Request.
 
-## 📄 License
+## License
 
 This project is currently available for educational and personal use.
 
